@@ -23,7 +23,7 @@ export default async function TemplatesPage() {
         description="Browse our collection of premium templates across every category. Select one as your starting point and we'll fully customize it to match your brand."
       />
 
-      <section className="section-padding bg-background pt-0 sm:pt-0">
+      <section className="section-padding bg-background pt-10">
         <div className="container-custom">
           <TemplatesGrid templates={templates} />
         </div>

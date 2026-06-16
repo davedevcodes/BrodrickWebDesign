@@ -23,7 +23,7 @@ export default async function PortfolioPage() {
         description="A collection of websites and web applications we've designed and built for clients across industries — each one crafted to perform as good as it looks."
       />
 
-      <section className="section-padding bg-background pt-0 sm:pt-0">
+      <section className="section-padding bg-background pt-10">
         <div className="container-custom">
           <PortfolioGrid projects={projects} />
         </div>
