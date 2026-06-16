@@ -33,7 +33,7 @@ export default function Navbar({ settings }: { settings: Settings }) {
               alt={settings.agency_name}
               width={140}
               height={40}
-              className="h-8 w-auto object-contain"
+              className="h-14 w-auto object-contain"
               priority
             />
           </Link>
