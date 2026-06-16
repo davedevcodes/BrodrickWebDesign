@@ -23,7 +23,7 @@ export default async function ContactPage() {
         description="Fill out the form below and tell us a bit about what you're looking to build. We'll get back to you within 24 hours with next steps."
       />
 
-      <section className="section-padding bg-background pt-0 sm:pt-0">
+      <section className="section-padding bg-background pt-10">
         <div className="container-custom grid grid-cols-1 gap-12 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <FadeUp>
