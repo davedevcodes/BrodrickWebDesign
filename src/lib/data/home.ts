@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/server";
 import type { Project, Template, Testimonial, ServiceCategory } from "@/types/database";
 
 export const FALLBACK_SERVICES: Pick<ServiceCategory, "name" | "slug" | "description" | "icon">[] = [
@@ -141,7 +141,7 @@ export const FALLBACK_TESTIMONIALS: Partial<Testimonial>[] = [
 
 export async function getFeaturedProjects(): Promise<Partial<Project>[]> {
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("projects")
       .select("*")
@@ -159,7 +159,7 @@ export async function getFeaturedProjects(): Promise<Partial<Project>[]> {
 
 export async function getFeaturedTemplates(): Promise<Partial<Template>[]> {
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("templates")
       .select("*")
@@ -177,7 +177,7 @@ export async function getFeaturedTemplates(): Promise<Partial<Template>[]> {
 
 export async function getTestimonials(): Promise<Partial<Testimonial>[]> {
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("testimonials")
       .select("*")
@@ -196,7 +196,7 @@ export async function getServiceCategories(): Promise<
   Pick<ServiceCategory, "name" | "slug" | "description" | "icon">[]
 > {
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("service_categories")
       .select("name, slug, description, icon")

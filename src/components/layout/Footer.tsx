@@ -12,7 +12,7 @@ export default function Footer({ settings }: { settings: Settings }) {
             alt={settings.agency_name}
             width={140}
             height={40}
-            className="h-14 rounded-lg w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
           <p className="text-sm text-text-secondary">{settings.footer_text}</p>
         </div>

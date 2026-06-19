@@ -44,3 +44,21 @@ export function createAdminClient() {
     }
   );
 }
+
+// Public client — does NOT read cookies(), safe to use in statically
+// generated pages (generateStaticParams + revalidate) without forcing
+// the page to switch from static to dynamic at runtime. Use this for
+// any public-facing read of published content (RLS already allows
+// public SELECT on these tables, so no user session is needed).
+export function createPublicClient() {
+  return createSupabaseClient<Database>(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    }
+  );
+}

@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/server";
 import type { Project, ProjectImage } from "@/types/database";
 import { FALLBACK_PROJECTS } from "@/lib/data/home";
 
@@ -6,7 +6,7 @@ export { PROJECT_CATEGORIES } from "@/lib/constants";
 
 export async function getAllProjects(): Promise<Partial<Project>[]> {
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("projects")
       .select("*")
@@ -23,7 +23,7 @@ export async function getAllProjects(): Promise<Partial<Project>[]> {
 
 export async function getProjectBySlug(slug: string): Promise<Partial<Project> | null> {
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("projects")
       .select("*")
@@ -44,7 +44,7 @@ export async function getProjectImages(projectId: string): Promise<ProjectImage[
   if (projectId.startsWith("fallback")) return [];
 
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("project_images")
       .select("*")
@@ -60,7 +60,7 @@ export async function getProjectImages(projectId: string): Promise<ProjectImage[
 
 export async function getAllProjectSlugs(): Promise<string[]> {
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("projects")
       .select("slug")

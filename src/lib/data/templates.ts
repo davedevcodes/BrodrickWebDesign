@@ -1,10 +1,10 @@
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/server";
 import type { Template, TemplateImage } from "@/types/database";
 import { FALLBACK_TEMPLATES } from "@/lib/data/home";
 
 export async function getAllTemplates(): Promise<Partial<Template>[]> {
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("templates")
       .select("*")
@@ -21,7 +21,7 @@ export async function getAllTemplates(): Promise<Partial<Template>[]> {
 
 export async function getTemplateBySlug(slug: string): Promise<Partial<Template> | null> {
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("templates")
       .select("*")
@@ -42,7 +42,7 @@ export async function getTemplateImages(templateId: string): Promise<TemplateIma
   if (templateId.startsWith("fallback")) return [];
 
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("template_images")
       .select("*")
@@ -58,7 +58,7 @@ export async function getTemplateImages(templateId: string): Promise<TemplateIma
 
 export async function getAllTemplateSlugs(): Promise<string[]> {
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("templates")
       .select("slug")

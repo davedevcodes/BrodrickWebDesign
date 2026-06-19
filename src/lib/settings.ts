@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/server";
 import type { Settings } from "@/types/database";
 
 const FALLBACK_SETTINGS: Settings = {
@@ -22,7 +22,7 @@ const FALLBACK_SETTINGS: Settings = {
 
 export async function getSiteSettings(): Promise<Settings> {
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("settings")
       .select("*")
